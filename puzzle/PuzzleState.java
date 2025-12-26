@@ -13,6 +13,26 @@ public class PuzzleState {
     public static final String GOAL = "012345678";
     
     /**
+     * Validates a puzzle state string.
+     * Ensures it is 9 characters long, contains only digits 0-8, and all digits are unique.
+     *
+     * @param state Puzzle state string
+     * @return true if valid, false otherwise
+     */
+    public static boolean isValidState(String state) {
+        if (state == null || state.length() != 9) return false;
+        boolean[] seen = new boolean[9];
+        for (int i = 0; i < 9; i++) {
+            char ch = state.charAt(i);
+            if (ch < '0' || ch > '8') return false;
+            int d = ch - '0';
+            if (seen[d]) return false;
+            seen[d] = true;
+        }
+        return true;
+    }
+    
+    /**
      * Generates all valid neighboring states by moving the blank tile.
      * 
      * @param state Current puzzle state

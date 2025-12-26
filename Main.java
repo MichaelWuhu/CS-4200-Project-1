@@ -44,6 +44,13 @@ public class Main {
             return;
         }
 
+        // Validate input: must be digits 0-8 exactly once (0 is the blank)
+        if (!PuzzleState.isValidState(startState)) {
+            System.out.println("Invalid puzzle: must contain digits 0-8 exactly once (0 is the blank).");
+            sc.close();
+            return;
+        }
+
         System.out.println("Puzzle:");
         System.out.println(PuzzleState.toGridString(startState));
 
