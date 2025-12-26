@@ -5,18 +5,15 @@ A* solver for the 8‑puzzle with two heuristics:
 - H2: Manhattan distance
 
 ## Prerequisites
-- JDK 11+ installed and on your PATH (`javac`, `java`).
-- Working directory: repository root.
+- JDK 11+ installed.
 
-## Quick start (unzip & run)
-1) Ensure a JDK with `javac` is installed (Java 11+). Check with:
-	- `javac -version` and `java -version`
-2) Unzip, then from the project root:
-	- Compile: `javac Main.java model/*.java heuristic/*.java puzzle/*.java solver/*.java util/*.java`
-	- Run: `java -cp . Main`
+## How to Run
+Run `Main.java` from IDE to run the program.
 
-### Windows note
-The same commands work in PowerShell/CMD. Keep the `-cp .` so the current folder is on the classpath.
+- VS Code:
+  1) Open the folder in VS Code.
+  2) Open `Main.java`.
+  3) Click "Run Java" (or the Run ▶ button above `main`).
 
 ## Usage
 1) Choose input method:
@@ -29,4 +26,3 @@ The same commands work in PowerShell/CMD. Keep the `-cp .` so the current folder
 
 ## Notes
 - Unsolvable inputs are detected via inversion count and reported immediately.
-- For repeat runs, recompile only if you change source files; otherwise rerun `java Main`.
