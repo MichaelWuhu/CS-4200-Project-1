@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Utility class for reading user input safely.
  */
 public class InputReader {
-    
+
     /**
      * Safely reads an integer from input, skipping invalid tokens.
      * 
@@ -19,7 +19,7 @@ public class InputReader {
         }
         return sc.nextInt();
     }
-    
+
     /**
      * Reads a 3x3 puzzle from standard input.
      * 

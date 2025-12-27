@@ -7,16 +7,16 @@ import java.util.List;
  * Contains the solution path, performance metrics, and execution time.
  */
 public class SearchResult {
-    private final List<String> path;      // Solution path from start to goal
-    private final int nodesGenerated;     // Total number of nodes generated (search cost)
-    private final double timeMs;          // Execution time in milliseconds
+    private final List<String> path; // Solution path from start to goal
+    private final int nodesGenerated; // Total number of nodes generated (search cost)
+    private final double timeMs; // Execution time in milliseconds
 
     /**
      * Constructs a new SearchResult with the specified parameters.
      * 
-     * @param path Solution path from start to goal
+     * @param path           Solution path from start to goal
      * @param nodesGenerated Total number of nodes generated
-     * @param timeMs Execution time in milliseconds
+     * @param timeMs         Execution time in milliseconds
      */
     public SearchResult(List<String> path, int nodesGenerated, double timeMs) {
         this.path = path;

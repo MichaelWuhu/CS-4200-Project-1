@@ -5,55 +5,65 @@ import java.util.List;
 
 /**
  * Represents and manages an 8-puzzle state.
- * Provides utilities for state manipulation, neighbor generation, and validation.
+ * Provides utilities for state manipulation, neighbor generation, and
+ * validation.
  */
 public class PuzzleState {
-    
+
     /** Goal state represented as a string in row-major order */
     public static final String GOAL = "012345678";
-    
+
     /**
      * Validates a puzzle state string.
-     * Ensures it is 9 characters long, contains only digits 0-8, and all digits are unique.
+     * Ensures it is 9 characters long, contains only digits 0-8, and all digits are
+     * unique.
      *
      * @param state Puzzle state string
      * @return true if valid, false otherwise
      */
     public static boolean isValidState(String state) {
-        if (state == null || state.length() != 9) return false;
+        if (state == null || state.length() != 9)
+            return false;
         boolean[] seen = new boolean[9];
         for (int i = 0; i < 9; i++) {
             char ch = state.charAt(i);
-            if (ch < '0' || ch > '8') return false;
+            if (ch < '0' || ch > '8')
+                return false;
             int d = ch - '0';
-            if (seen[d]) return false;
+            if (seen[d])
+                return false;
             seen[d] = true;
         }
         return true;
     }
-    
+
     /**
      * Generates all valid neighboring states by moving the blank tile.
      * 
      * @param state Current puzzle state
-     * @return List of neighboring states (2-4 neighbors depending on blank position)
+     * @return List of neighboring states (2-4 neighbors depending on blank
+     *         position)
      */
     public static List<String> getNeighbors(String state) {
-        int z = state.indexOf('0');  // Find blank tile position
-        int zr = z / 3;              // Blank row
-        int zc = z % 3;              // Blank column
-        
+        int z = state.indexOf('0'); // Find blank tile position
+        int zr = z / 3; // Blank row
+        int zc = z % 3; // Blank column
+
         List<String> neighbors = new ArrayList<>(4);
-        
+
         // Generate neighbors in fixed order for consistency
-        if (zr > 0) neighbors.add(swap(state, z, z - 3)); // Move up
-        if (zr < 2) neighbors.add(swap(state, z, z + 3)); // Move down
-        if (zc > 0) neighbors.add(swap(state, z, z - 1)); // Move left
-        if (zc < 2) neighbors.add(swap(state, z, z + 1)); // Move right
-        
+        if (zr > 0)
+            neighbors.add(swap(state, z, z - 3)); // Move up
+        if (zr < 2)
+            neighbors.add(swap(state, z, z + 3)); // Move down
+        if (zc > 0)
+            neighbors.add(swap(state, z, z - 1)); // Move left
+        if (zc < 2)
+            neighbors.add(swap(state, z, z + 1)); // Move right
+
         return neighbors;
     }
-    
+
     /**
      * Creates a new state by swapping two tiles.
      * 
@@ -69,7 +79,7 @@ public class PuzzleState {
         a[j] = tmp;
         return new String(a);
     }
-    
+
     /**
      * Counts the number of inversions in the puzzle (excluding the blank tile).
      * An inversion occurs when a larger tile appears before a smaller tile.
@@ -81,7 +91,7 @@ public class PuzzleState {
     public static int countInversions(String state) {
         int[] arr = new int[8];
         int k = 0;
-        
+
         // Extract non-zero tiles into array
         for (int i = 0; i < 9; i++) {
             int v = state.charAt(i) - '0';
@@ -89,7 +99,7 @@ public class PuzzleState {
                 arr[k++] = v;
             }
         }
-        
+
         // Count inversions using brute force
         int inv = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -101,7 +111,7 @@ public class PuzzleState {
         }
         return inv;
     }
-    
+
     /**
      * Checks if a puzzle state is solvable.
      * A puzzle is solvable if it has an even number of inversions.
@@ -112,7 +122,7 @@ public class PuzzleState {
     public static boolean isSolvable(String state) {
         return countInversions(state) % 2 == 0;
     }
-    
+
     /**
      * Converts a 2D puzzle array to a string representation.
      * 
@@ -128,7 +138,7 @@ public class PuzzleState {
         }
         return sb.toString();
     }
-    
+
     /**
      * Formats a puzzle state string as a 3x3 grid for display.
      * 
@@ -137,7 +147,7 @@ public class PuzzleState {
      */
     public static String toGridString(String state) {
         return state.charAt(0) + " " + state.charAt(1) + " " + state.charAt(2) + "\n" +
-               state.charAt(3) + " " + state.charAt(4) + " " + state.charAt(5) + "\n" +
-               state.charAt(6) + " " + state.charAt(7) + " " + state.charAt(8);
+                state.charAt(3) + " " + state.charAt(4) + " " + state.charAt(5) + "\n" +
+                state.charAt(6) + " " + state.charAt(7) + " " + state.charAt(8);
     }
 }

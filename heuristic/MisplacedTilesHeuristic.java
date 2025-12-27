@@ -5,9 +5,9 @@ package heuristic;
  * This is an admissible heuristic (never overestimates the true cost).
  */
 public class MisplacedTilesHeuristic implements Heuristic {
-    
+
     private static final String GOAL = "012345678";
-    
+
     /**
      * Calculates the number of tiles not in their goal positions.
      * 
@@ -19,14 +19,15 @@ public class MisplacedTilesHeuristic implements Heuristic {
         int misplaced = 0;
         for (int i = 0; i < 9; i++) {
             char ch = state.charAt(i);
-            if (ch == '0') continue;
+            if (ch == '0')
+                continue;
             if (ch != GOAL.charAt(i)) {
                 misplaced++;
             }
         }
         return misplaced;
     }
-    
+
     @Override
     public String getName() {
         return "H1 (Misplaced Tiles)";
